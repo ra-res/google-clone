@@ -3,6 +3,7 @@ import Avatar from "../components/Avatar";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/solid";
+import HeaderOptions from "./HeaderOptions";
 
 function Header() {
   const router = useRouter();
@@ -53,6 +54,8 @@ function Header() {
           url='https://images.unsplash.com/photo-1623265041640-8973a7afe898?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80'
         />
       </div>
+      {/* Header Options Component */}
+      <HeaderOptions />
     </header>
   );
 }
