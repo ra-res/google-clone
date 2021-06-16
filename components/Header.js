@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useRef } from "react";
 import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/solid";
 import HeaderOptions from "./HeaderOptions";
+import VoiceInput from "./VoiceInput";
 
 function Header() {
   const router = useRouter();
@@ -42,7 +43,7 @@ function Header() {
               searchInputRef.current.value = "";
             }}
           />
-          <MicrophoneIcon className='h-6 mr-3 hidden sm:inline-flex text-blue-500 border-l-2 pl-3 border-gray-300' />
+          <VoiceInput classAttr='h-6 mr-3 hidden sm:inline-flex text-blue-500 border-l-2 pl-3 border-gray-300' />
           <SearchIcon className='h-6 text-blue-500 hidden sm:inline-flex' />
           <button hidden type='submit' onClick={search}>
             Search

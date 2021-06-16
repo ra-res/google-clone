@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Avatar from "../components/Avatar";
 import Footer from "../components/Footer";
+import VoiceInput from "../components/VoiceInput";
 import { MicrophoneIcon, ViewGridIcon } from "@heroicons/react/solid";
 import { SearchIcon } from "@heroicons/react/outline";
 import { useRef } from "react";
@@ -64,7 +65,8 @@ export default function Home() {
             type='text'
             className='focus:outline-none flex-grow'
           />
-          <MicrophoneIcon className='h-5' />
+          {/* TODO: Add voice functionality */}
+          <VoiceInput classAttr='h-5' />
         </div>
         <div className='flex flex-col w-1/2 space-y-2 justify-center mt-8 sm:space-y-0 sm:flex-row sm:space-x-4'>
           <button onClick={search} className='btn'>
