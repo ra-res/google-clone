@@ -11,6 +11,14 @@ import { useRef } from "react";
 export default function Home() {
   const router = useRouter();
   const searchInputRef = useRef(null);
+  const feelingLucky = (e) => {
+    e.preventDefault();
+    let randomWords = require("random-words");
+    const term = randomWords(1);
+    console.log(term[0]);
+    if (!term) return;
+    router.push(`/search?term=${term[0]}`);
+  };
 
   const search = (e) => {
     e.preventDefault();
@@ -72,7 +80,7 @@ export default function Home() {
           <button onClick={search} className='btn'>
             Google Search
           </button>
-          <button onClick={search} className='btn'>
+          <button onClick={feelingLucky} className='btn'>
             I'm Feeling Lucky
           </button>
         </div>
