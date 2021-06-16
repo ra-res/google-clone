@@ -1,10 +1,29 @@
 import { GlobeIcon } from "@heroicons/react/solid";
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
 function Footer() {
+  const locationRef = useRef(false);
+  const [location, setLocation] = useState("Japan");
+  const getGeoInfo = async () => {
+    await axios
+      .get("https://ipapi.co/json/")
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+        setLocation(data.country_name);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  getGeoInfo();
+
   return (
     <footer className='grid w-full divide-y-[1px] divide-gray-300 bg-gray-100 text-sm text-gray-500'>
       <div className='px-8 py-3'>
-        <p>United Kingdom</p>
+        <p>{location}</p>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4 grid-flow-row-dense px-8 py-3'>
         <div className='flex justify-center items-center md:col-span-2 lg:col-span-1 lg:col-start-2 '>

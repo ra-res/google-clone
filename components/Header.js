@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Avatar from "../components/Avatar";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/solid";
 import HeaderOptions from "./HeaderOptions";
 import VoiceInput from "./VoiceInput";
@@ -9,7 +9,9 @@ import VoiceInput from "./VoiceInput";
 function Header() {
   const router = useRouter();
   const searchInputRef = useRef(null);
-
+  useEffect(() => {
+    searchInputRef.current.value = router.query.term;
+  }, [router.query.term]);
   const search = (e) => {
     e.preventDefault();
     const term = searchInputRef.current.value;
