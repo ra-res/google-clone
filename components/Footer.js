@@ -9,9 +9,7 @@ function Footer() {
     await axios
       .get("https://ipapi.co/json/")
       .then((response) => {
-        const data = response.data;
-        console.log(data);
-        setLocation(data.country_name);
+        setLocation(response?.data?.country_name);
       })
       .catch((error) => {
         console.log(error);
