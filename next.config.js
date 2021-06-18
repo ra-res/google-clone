@@ -1,4 +1,3 @@
-const licensePlugin = require("webpack-license-plugin");
 const nextConfigs = {
   // webpack: (config, { dev, isServer }) => {
   //   if (isServer) {
