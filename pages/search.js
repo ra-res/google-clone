@@ -24,11 +24,12 @@ export default Search;
 export async function getServerSideProps(context) {
   const useDummyData = true;
   const startIndex = context.query.start || "0";
-
+  const API_KEY = process.env.API_KEY || "no-key";
+  const CONTEXT_KEY = process.env.API_KEY || "no-context-key";
   const data = useDummyData
     ? Response
     : await fetch(
-        `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`
+        `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`
       )
         .then((response) => response.json())
         .catch((err) => {
