@@ -17,8 +17,10 @@
     "@tailwindcss/line-clamp": "^0.2.1",
     "axios": "^0.21.1",
     "cookie": "^0.4.1",
+    "critters": "^0.0.10",
     "js-cookie": "^2.2.1",
     "next": "10.2.3",
+    "next-babel-minify": "^1.0.0",
     "random-animal": "^1.0.7",
     "random-words": "^1.1.1",
     "react": "17.0.2",
@@ -27,9 +29,15 @@
     "react-icons": "^4.2.0"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.14.5",
     "autoprefixer": "^10.2.6",
+    "html-webpack-plugin": "^5.3.1",
+    "next-compose-plugins": "^2.2.1",
     "postcss": "^8.3.3",
-    "tailwindcss": "^2.1.4"
+    "tailwindcss": "^2.1.4",
+    "webpack": "^5.39.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-middleware": "^5.0.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-license-plugin": "^4.1.2"
   }
 }

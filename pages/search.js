@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
-import Response from "../response";
+import Response from "../Response";
 import SearchResults from "../components/SearchResults";
 import Footer from "../components/Footer";
 

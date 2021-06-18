@@ -2,7 +2,7 @@ import Image from "next/image";
 import Avatar from "../components/Avatar";
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
-import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/solid";
+import { SearchIcon, XIcon } from "@heroicons/react/solid";
 import HeaderOptions from "./HeaderOptions";
 import VoiceInput from "./VoiceInput";
 
