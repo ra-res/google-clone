@@ -2,10 +2,15 @@
   "name": "google-clone",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index.js",
+  "engines": {
+    "node": "16.2.0"
+  },
+  "engineStrict": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 3001"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.1",
