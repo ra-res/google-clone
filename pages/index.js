@@ -7,9 +7,9 @@ import { ViewGridIcon, SunIcon, MoonIcon } from "@heroicons/react/solid";
 import { SearchIcon } from "@heroicons/react/outline";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import Cookie from "js-cookie";
 import { parseCookies } from "../lib/ParseCookies";
 import { useCookies } from "react-cookie";
+
 export default function Home({ initialDarkMode = true }) {
   const router = useRouter();
   const searchInputRef = useRef(null);
