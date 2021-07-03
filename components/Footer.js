@@ -2,7 +2,7 @@ import { GlobeIcon } from "@heroicons/react/solid";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-function Footer() {
+function Footer({ DarkMode }) {
   const locationRef = useRef(false);
   const [location, setLocation] = useState("Japan");
   const getGeoInfo = async () => {
@@ -19,7 +19,10 @@ function Footer() {
   getGeoInfo();
 
   return (
-    <footer className='grid w-full divide-y-[1px] divide-gray-300 bg-gray-100 text-sm text-gray-500'>
+    <footer
+      className={`grid w-full divide-y-[1px] ${
+        DarkMode ? "bg-black divide-gray-800" : "bg-gray-100 divide-gray-300"
+      } text-sm text-gray-500`}>
       <div className='px-8 py-3'>
         <p>{location}</p>
       </div>
