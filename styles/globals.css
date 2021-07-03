@@ -11,4 +11,7 @@
   .btn {
     @apply bg-[#f8f9fa] p-3 rounded-md ring-gray-200 text-sm text-gray-800 hover:ring-1 focus:outline-none active:ring-gray-300 hover:shadow-md;
   }
+  .btn-dark {
+    @apply bg-black p-3 rounded-md ring-gray-800 text-sm text-gray-500 hover:ring-1 focus:outline-none active:ring-gray-800 hover:shadow-md;
+  }
 }
