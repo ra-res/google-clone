@@ -5,13 +5,16 @@ import { useEffect, useRef } from "react";
 import { SearchIcon, XIcon } from "@heroicons/react/solid";
 import HeaderOptions from "./HeaderOptions";
 import VoiceInput from "./VoiceInput";
+import DarkModeSwitch from "./DarkModeSwitch";
 
-function Header() {
+function Header({ darkMode, setDarkModeAndCookie }) {
   const router = useRouter();
   const searchInputRef = useRef(null);
+
   useEffect(() => {
     searchInputRef.current.value = router.query.term;
   }, [router.query.term]);
+
   const search = (e) => {
     e.preventDefault();
     const term = searchInputRef.current.value;
@@ -51,6 +54,11 @@ function Header() {
             Search
           </button>
         </form>
+        <DarkModeSwitch
+          darkMode={darkMode}
+          setDarkModeAndCookie={setDarkModeAndCookie}
+          className={"pr-3"}
+        />
         <Avatar
           // TODO: margin-left: auto not working on search page
           classAttr='ml-auto'
