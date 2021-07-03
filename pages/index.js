@@ -1,21 +1,21 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { ViewGridIcon } from "@heroicons/react/solid";
+import { SearchIcon } from "@heroicons/react/outline";
+import { useRef, useState } from "react";
+import { useCookies } from "react-cookie";
+
 import Avatar from "../components/Avatar";
 import Footer from "../components/Footer";
 import VoiceInput from "../components/VoiceInput";
-import { ViewGridIcon, SunIcon, MoonIcon } from "@heroicons/react/solid";
-import { SearchIcon } from "@heroicons/react/outline";
-import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/router";
 import { parseCookies } from "../lib/ParseCookies";
-import { useCookies } from "react-cookie";
-
+import DarkModeSwitch from "../components/DarkModeSwitch";
 export default function Home({ initialDarkMode = true }) {
-  const router = useRouter();
   const searchInputRef = useRef(null);
-  const [cookie, setCookie] = useCookies(["DarkMode"]);
 
   const [darkMode, setDarkMode] = useState(initialDarkMode);
+  const [cookie, setCookie] = useCookies(["DarkMode"]);
 
   const setDarkModeAndCookie = () => {
     setDarkMode(!darkMode);
@@ -25,9 +25,15 @@ export default function Home({ initialDarkMode = true }) {
     });
   };
 
-  useEffect(() => {
-    console.log(cookie);
-  }, [darkMode]);
+  const router = useRouter();
+
+  const search = (e) => {
+    e.preventDefault();
+    const term = searchInputRef.current.value;
+
+    if (!term) return;
+    router.push(`/search?term=${term}`);
+  };
 
   const feelingLucky = (e) => {
     e.preventDefault();
@@ -36,14 +42,6 @@ export default function Home({ initialDarkMode = true }) {
 
     if (!term) return;
     router.push(`/search?term=${term[0]}`);
-  };
-
-  const search = (e) => {
-    e.preventDefault();
-    const term = searchInputRef.current.value;
-
-    if (!term) return;
-    router.push(`/search?term=${term}`);
   };
 
   return (
@@ -69,18 +67,12 @@ export default function Home({ initialDarkMode = true }) {
           <p className='link'>Store</p>
         </div>
         {/* Right */}
+
         <div className='flex space-x-4 items-center '>
-          {darkMode ? (
-            <SunIcon
-              onClick={setDarkModeAndCookie}
-              className='h-5 cursor-pointer'
-            />
-          ) : (
-            <MoonIcon
-              onClick={setDarkModeAndCookie}
-              className='h-5 cursor-pointer'
-            />
-          )}
+          <DarkModeSwitch
+            darkMode={darkMode}
+            setDarkModeAndCookie={setDarkModeAndCookie}
+          />
           <p className='link'>Gmail</p>
           <p className='link'>Images</p>
 
