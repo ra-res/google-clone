@@ -1,19 +1,33 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { useCookies } from "react-cookie";
+
+import { parseCookies } from "../lib/ParseCookies";
 import Header from "../components/Header";
 import Response from "../Response";
 import SearchResults from "../components/SearchResults";
 import Footer from "../components/Footer";
 
-function Search({ results }) {
+function Search({ results, initialDarkMode }) {
+  const [darkMode, setDarkMode] = useState(initialDarkMode);
+  const [cookie, setCookie] = useCookies(["DarkMode"]);
+  const setDarkModeAndCookie = () => {
+    setDarkMode(!darkMode);
+    setCookie("DarkMode", JSON.stringify(!darkMode), {
+      maxAge: 3600,
+      sameSite: true,
+    });
+  };
+
   const router = useRouter();
   return (
     <div>
       <Head>
         <title>{router.query.term} - Google Search</title>
       </Head>
-      <Header />
-      <SearchResults results={results} />
+      <Header darkMode={darkMode} setDarkModeAndCookie={setDarkModeAndCookie} />
+      <SearchResults darkMode={darkMode} results={results} />
       <Footer />
     </div>
   );
@@ -22,6 +36,7 @@ function Search({ results }) {
 export default Search;
 
 export async function getServerSideProps(context) {
+  const cookies = parseCookies(context.req);
   const useDummyData = true;
   const startIndex = context.query.start || "0";
   const API_KEY = process.env.API_KEY || "no-key";
@@ -36,9 +51,17 @@ export async function getServerSideProps(context) {
           console.error(err);
         });
   // once rendered, pass results to client
+  if (cookies.DarkMode)
+    return {
+      props: {
+        results: data,
+        initialDarkMode: JSON.parse(cookies.DarkMode),
+      },
+    };
   return {
     props: {
       results: data,
+      initialDarkMode: false,
     },
   };
 }
