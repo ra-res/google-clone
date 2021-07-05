@@ -14,9 +14,12 @@
     "heroku-postbuild": "next build"
   },
   "dependencies": {
+    "@babel/core": "^7.14.6",
     "@heroicons/react": "^1.0.1",
     "@tailwindcss/line-clamp": "^0.2.1",
     "axios": "^0.21.1",
+    "babel": "^6.23.0",
+    "babel-preset-next": "^1.4.0",
     "cookie": "^0.4.1",
     "critters": "^0.0.10",
     "firebase": "^8.7.0",
